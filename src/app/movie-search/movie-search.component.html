@@ -1,0 +1,19 @@
+<div class="input-group mb-3">
+  <input type="text" [(ngModel)]="movieName" (keyup.enter)="onSubmit()" class="form-control" placeholder="Movie Name">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" (click)="onSubmit()"  [class.disabled]="isDisabled()" type="button">Submit</button>
+  </div>    
+</div>
+
+
+<div class="row" *ngIf="selectedMovie">
+    <div class="col-4">
+        <div class="card">
+          <img class="card-img-top" src="{{selectedMovie.poster}}" alt="{{selectedMovie.title}}">
+          <div class="card-body">
+            <h5 class="card-title">{{selectedMovie.title | uppercase}}</h5>
+            <p class="card-text">{{selectedMovie.plot}}</p>
+          </div>
+        </div>   
+    </div>
+</div>

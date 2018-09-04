@@ -31,7 +31,7 @@ export class KeyApiComponent implements OnInit {
       this.movieService
       .getMovie('alpha')
       .subscribe(movie => {this.isValidKey = movie.imdbID.length > 0; },
-      error => {this.errorMessage = error.error.Error; console.log(error);});
+      error => {this.errorMessage = error.error.Error; });
   }
 
 }

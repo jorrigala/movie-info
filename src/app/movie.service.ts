@@ -10,7 +10,7 @@ import { KeyApiService } from './key-api.service';
 @Injectable()
 export class MovieService {
 
-  OMDb_API = 'http://www.omdbapi.com/?apikey=';
+  OMDb_API = '//www.omdbapi.com/?apikey=';
   constructor(
     private http: HttpClient,
     private keyApiService: KeyApiService) { }

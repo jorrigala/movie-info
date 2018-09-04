@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { KeyApiService } from '../key-api.service';
 import { MovieService } from '../movie.service';
 import { ApiKey } from '../api-key';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-key-api',
@@ -23,7 +24,7 @@ export class KeyApiComponent implements OnInit {
       this.apiKey = this.keyApiService.getOMDbKeyApi();
       this.isValidKey = this.apiKey.isValid;
       this.OMDb_Key_Api = this.apiKey.key;
-      if (!this.isValidKey) {
+      if (_.isString(this.OMDb_Key_Api) && !this.isValidKey) {
           this.setOMDbKeyApi();
       }
   }

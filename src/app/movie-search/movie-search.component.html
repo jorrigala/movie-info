@@ -6,13 +6,13 @@
 </div>
 
 
-<div class="row" *ngIf="selectedMovie">
-    <div class="col-4">
+<div class="row" *ngIf="movieList" >
+    <div class="col-4" *ngFor="let movie of movieList">
         <div class="card">
-          <img class="card-img-top" src="{{selectedMovie.poster}}" alt="{{selectedMovie.title}}">
+          <img class="card-img-top" src="{{movie.poster}}" alt="{{movie.title}}">
           <div class="card-body">
-            <h5 class="card-title">{{selectedMovie.title | uppercase}}</h5>
-            <p class="card-text">{{selectedMovie.plot}}</p>
+            <h5 class="card-title">{{movie.title | uppercase}}</h5>
+            <p class="card-text">{{movie.plot}}</p>
           </div>
         </div>   
     </div>

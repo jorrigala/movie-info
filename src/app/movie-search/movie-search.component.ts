@@ -10,7 +10,7 @@ import { MovieService } from '../movie.service';
 })
 export class MovieSearchComponent implements OnInit {
 
-  selectedMovie: Movie;
+  movieList: Movie[];
   movieName = '';
 
   constructor(private movieService: MovieService) { }
@@ -20,8 +20,8 @@ export class MovieSearchComponent implements OnInit {
 
   onSubmit(): void {
       this.movieService
-      .getMovie(this.movieName)
-      .subscribe(movie => {this.selectedMovie = movie; });
+      .getMovies(this.movieName)
+      .subscribe(movie => {this.movieList = movie; });
   }
 
   isDisabled(): boolean {

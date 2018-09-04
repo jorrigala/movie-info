@@ -16,7 +16,7 @@ export class MovieService {
     private keyApiService: KeyApiService) { }
 
   getOMDBURI(): string {
-      return this.OMDb_API + this.keyApiService.getOMDbKeyApi() + '&';
+      return this.OMDb_API + this.keyApiService.getOMDbKeyApi().key + '&';
   }
 
   getMovie(movie: string): Observable<Movie> {

@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 
+import { ApiKey } from './api-key';
+
 @Injectable()
 export class KeyApiService {
 
   // need to develop keystore
-  OMDb_Key_Api: string;
+  apiKey = new ApiKey();
   constructor() { }
 
-  getOMDbKeyApi(): string {
-      return this.OMDb_Key_Api;
+  getOMDbKeyApi(): ApiKey {
+      return this.apiKey;
   }
 
-  setOMDbKeyApi(keyApi: string): void {
-      this.OMDb_Key_Api = keyApi;
+  setOMDbKeyApi(keyApi: ApiKey): void {
+      this.apiKey = keyApi;
   }
 
 }

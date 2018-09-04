@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as camelCaseKeysDeep from 'camelcase-keys-deep/index';
 
 import { Movie } from './movie';
-import { MovieSearch } from './movie-search';
+import { MovieSearch } from './movie-search.model';
 import { KeyApiService } from './key-api.service';
 
 @Injectable()

@@ -21,7 +21,7 @@ export class MovieSearchComponent implements OnInit {
   onSubmit(): void {
       this.movieService
       .getMovies(this.movieName)
-      .subscribe(movie => {this.movieList = movie; });
+      .subscribe(movie => {this.movieList = movie.search; });
   }
 
   isDisabled(): boolean {

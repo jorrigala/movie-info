@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as camelCaseKeysDeep from 'camelcase-keys-deep/index';
 
 import { Movie } from './movie';
+import { MovieSearch } from './movie-search';
 import { KeyApiService } from './key-api.service';
 
 @Injectable()
@@ -28,11 +29,11 @@ export class MovieService {
       );
   }
 
-  getMovies(movie: string): Observable<Movie[]> {
-      return this.http.get<Movie[]>(this.getOMDBURI() + 's=' + movie + '&type=movie')
+  getMovies(movie: string): Observable<MovieSearch> {
+      return this.http.get<MovieSearch>(this.getOMDBURI() + 's=' + movie + '&type=movie')
       .pipe(
         map( response => {
-            return camelCaseKeysDeep(response.Search);
+            return camelCaseKeysDeep(response);
         })
       );
   }

@@ -24,7 +24,7 @@ export class KeyApiComponent implements OnInit {
       this.apiKey = this.keyApiService.getOMDbKeyApi();
       this.isValidKey = this.apiKey.isValid;
       this.OMDb_Key_Api = this.apiKey.key;
-      if (_.isString(this.OMDb_Key_Api) && !this.isValidKey) {
+      if (_.isString(this.OMDb_Key_Api) && !_.isEmpty(this.OMDb_Key_Api) && !this.isValidKey) {
           this.setOMDbKeyApi();
       }
   }

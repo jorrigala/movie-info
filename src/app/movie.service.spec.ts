@@ -1,11 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { MovieService } from './movie.service';
+import { KeyApiService } from './key-api.service';
 
 describe('MovieService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MovieService]
+      imports: [HttpClientTestingModule],
+      providers: [MovieService,
+                 KeyApiService]
     });
   });
 

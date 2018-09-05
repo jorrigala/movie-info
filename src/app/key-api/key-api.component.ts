@@ -24,24 +24,30 @@ export class KeyApiComponent implements OnInit {
       this.apiKey = this.keyApiService.getOMDbKeyApi();
       this.isValidKey = this.apiKey.isValid;
       this.OMDb_Key_Api = this.apiKey.key;
-      if (_.isString(this.OMDb_Key_Api) && !_.isEmpty(this.OMDb_Key_Api) && !this.isValidKey) {
-          this.setOMDbKeyApi();
+      if ( !this.isValidKey) {
+          this.errorMessage = 'Enter Valid API key';
       }
+  }
+
+  isValid(): boolean {
+      return _.isString(this.OMDb_Key_Api) && !_.isEmpty(this.OMDb_Key_Api);
   }
 
   setOMDbKeyApi(): void {
       this.apiKey.key = this.OMDb_Key_Api;
-      this.keyApiService
-      .setOMDbKeyApi(this.apiKey);
+      if ( this.isValid() ) {
+          this.keyApiService
+          .setOMDbKeyApi(this.apiKey);
 
-      // validation the key
-      this.isValidKey = false;
-      this.apiKey.isValid = this.isValidKey;
-      this.movieService
-      .getMovie('alpha')
-      .subscribe(movie => {this.isValidKey = movie.imdbID.length > 0;
-  this.apiKey.isValid = this.isValidKey; },
-      error => {this.errorMessage = error.error.Error; });
+          // validation the key
+          this.isValidKey = false;
+          this.apiKey.isValid = this.isValidKey;
+          this.movieService
+          .getMovie('alpha')
+          .subscribe(movie => {this.isValidKey = movie.imdbID.length > 0;
+      this.apiKey.isValid = this.isValidKey; },
+          error => {this.errorMessage = error.error.Error; });
+      }
   }
 
 }

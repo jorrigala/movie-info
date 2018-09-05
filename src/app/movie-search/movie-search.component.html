@@ -1,5 +1,5 @@
 <div class="input-group mb-3">
-  <input type="text" [(ngModel)]="movieName" (keyup.enter)="onSubmit()" class="form-control" placeholder="Movie Name">
+  <input type="text" [(ngModel)]="movieName" (keyup.enter)="onSubmit()" class="form-control" [placeholder]="isValidKey?'Movie Name': 'Enter Valid Api key'">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" (click)="onSubmit()"  [class.disabled]="isDisabled()" type="button">Submit</button>
   </div>    

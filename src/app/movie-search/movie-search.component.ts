@@ -15,11 +15,13 @@ export class MovieSearchComponent implements OnInit {
 
   movieList: Movie[];
   movieName = '';
+  isValidKey: boolean;
 
   constructor(private movieService: MovieService,
               private keyApiService: KeyApiService) { }
 
   ngOnInit() {
+      this.isValidKey = this.keyApiService.getOMDbKeyApi().isValid;
   }
 
   onSubmit(): void {

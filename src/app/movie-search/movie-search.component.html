@@ -1,19 +1,17 @@
 <div class="input-group mb-3">
-  <input type="text" [(ngModel)]="movieName" (keyup.enter)="onSubmit()" class="form-control" [placeholder]="isValidKey?'Movie Name': 'Enter Valid Api key'">
+  <input type="text" [(ngModel)]="movieName" (keyup.enter)="onSubmit()" class="form-control" [placeholder]="isValidKey?'Movie Name': 'Enter Valid Api key @/keyapi'">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" (click)="onSubmit()"  [class.disabled]="isDisabled()" type="button">Submit</button>
   </div>    
 </div>
 
 
-<div class="row" *ngIf="movieList" >
-    <div class="col-4" *ngFor="let movie of movieList">
-        <div class="card">
-          <img class="card-img-top" src="{{movie.poster}}" alt="{{movie.title}}">
-          <div class="card-body">
-            <h5 class="card-title">{{movie.title | uppercase}}</h5>
-            <p class="card-text">{{movie.plot}}</p>
-          </div>
-        </div>   
+<div class="card-columns" *ngIf="movieList" >
+    <div class="card" *ngFor="let movie of movieList">
+      <img class="card-img-top" src="{{movie.poster}}" alt="{{movie.title}}">
+      <div class="card-body">
+        <h5 class="card-title">{{movie.title}}</h5>
+        <p class="card-text">{{movie.year}}</p>
+      </div>
     </div>
 </div>

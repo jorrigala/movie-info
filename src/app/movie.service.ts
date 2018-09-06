@@ -23,27 +23,25 @@ export class MovieService {
   getMovie(movie: string): Observable<Movie> {
       return this.http.get<Movie>(this.getOMDBURI() + 't=' + movie)
       .pipe(
-        map( response => {
-            return camelCaseKeysDeep(response);
-        })
+        map( this.getCamelCaseKeysDeep )
       );
   }
 
   getMovies(movie: string): Observable<MovieSearch> {
       return this.http.get<MovieSearch>(this.getOMDBURI() + 's=' + movie + '&type=movie')
       .pipe(
-        map( response => {
-            return camelCaseKeysDeep(response);
-        })
+        map( this.getCamelCaseKeysDeep )
       );
   }
 
   getMoviebyImdbId(imdbId: string ): Observable<Movie> {
       return this.http.get<Movie>(this.getOMDBURI() + 'i=' + imdbId + '&type=movie')
       .pipe(
-        map( response => {
-            return camelCaseKeysDeep(response);
-        })
+        map( this.getCamelCaseKeysDeep )
       );
+  }
+
+  getCamelCaseKeysDeep(response: any ): any {
+      return camelCaseKeysDeep(response);
   }
 }

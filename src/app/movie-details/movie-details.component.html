@@ -1,0 +1,12 @@
+<div class="row" *ngIf="movie">
+    <div class="col-3">
+      <img class="card-img-top" src="{{movie.poster}}" alt="{{movie.title}}">
+    </div>
+    <div class="col-7">
+        <strong>Title</strong> : {{movie.title}} <br>
+        <strong>Actors</strong> : {{movie.actors}} <br>
+        <strong>Language(s)</strong> : {{movie.language}} <br>
+        <strong>Genre</strong> : {{movie.genre}} <br>
+        <strong>Plot</strong> : {{movie.plot}} <br>
+    </div>
+</div>

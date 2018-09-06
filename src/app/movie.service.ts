@@ -37,4 +37,13 @@ export class MovieService {
         })
       );
   }
+
+  getMoviebyImdbId(imdbId: string ): Observable<Movie> {
+      return this.http.get<Movie>(this.getOMDBURI() + 'i=' + imdbId + '&type=movie')
+      .pipe(
+        map( response => {
+            return camelCaseKeysDeep(response);
+        })
+      );
+  }
 }

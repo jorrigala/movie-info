@@ -8,10 +8,12 @@
 
 <div class="card-columns" *ngIf="movieList" >
     <div class="card" *ngFor="let movie of movieList">
-      <img class="card-img-top" src="{{movie.poster}}" alt="{{movie.title}}">
-      <div class="card-body">
-        <h5 class="card-title">{{movie.title}}</h5>
-        <p class="card-text">{{movie.year}}</p>
-      </div>
+        <a routerLink="/detail/{{movie.imdbID}}">
+            <img class="card-img-top" src="{{movie.poster}}" alt="{{movie.title}}">
+            <div class="card-body">
+                <h5 class="card-title">{{movie.title}}</h5>
+                <p class="card-text">{{movie.year}}</p>
+            </div>        
+        </a>
     </div>
 </div>

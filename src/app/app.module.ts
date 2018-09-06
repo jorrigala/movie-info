@@ -11,13 +11,15 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { MovieService } from './movie.service';
 import { KeyApiComponent } from './key-api/key-api.component';
 import { KeyApiService } from './key-api.service';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieSearchComponent,
-    KeyApiComponent
+    KeyApiComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -17,4 +17,8 @@ export class KeyApiService {
       this.apiKey = keyApi;
   }
 
+  isValidKey(): boolean {
+      return this.getOMDbKeyApi().isValid;
+  }
+
 }

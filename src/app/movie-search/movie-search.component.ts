@@ -29,7 +29,7 @@ export class MovieSearchComponent implements OnInit {
       this.isValidKey = this.keyApiService.getOMDbKeyApi().isValid;
   }
 
-  private hasNextPage(): boolean {
+  hasNextPage(): boolean {
       return this.pageNumber * this.pageSize <= this.movieSearch.totalResults;
   }
 

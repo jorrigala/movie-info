@@ -14,12 +14,13 @@ import StringUtil from '../util/string-util';
 })
 export class MovieSearchComponent implements OnInit {
 
-  private movieSearch: MovieSearch;
-  private pagesize = 1;
+  private pageNumber = 1;
+  private pageSize = 10;
 
   movieName = '';
   movieList: Movie[];
   isValidKey: boolean;
+  movieSearch: MovieSearch;
 
   constructor(private movieService: MovieService,
               private keyApiService: KeyApiService) { }
@@ -28,17 +29,30 @@ export class MovieSearchComponent implements OnInit {
       this.isValidKey = this.keyApiService.getOMDbKeyApi().isValid;
   }
 
+  private hasNextPage(): boolean {
+      return this.pageNumber * this.pageSize <= this.movieSearch.totalResults;
+  }
+
+  private getNextPage(): number {
+      return ++this.pageNumber;
+  }
+
+  private refreshPageProperties() {
+      this.pageNumber = 1;
+      this.pageSize = 10;
+  }
+
   @HostListener('window:scroll', [])
   onScroll(): void {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && this.pagesize <= this.movieSearch.totalResults) {
-        this.pagesize++;
-        this.getMovies(this.movieName, this.pagesize, this.nextPageCall);
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && this.hasNextPage()) {
+        this.getMovies(this.movieName, this.getNextPage(), this.nextPageCall);
     }
   }
 
   onSubmit(): void {
+      this.refreshPageProperties();
       if ( StringUtil.isDefinedAndNotEmpty(this.movieName) && this.keyApiService.isValidKey()) {
-          this.getMovies(this.movieName, this.pagesize, this.initialPageCall);
+          this.getMovies(this.movieName, this.pageNumber, this.initialPageCall);
       }
   }
 

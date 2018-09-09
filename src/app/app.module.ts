@@ -12,7 +12,7 @@ import { MovieService } from './movie.service';
 import { KeyApiComponent } from './key-api/key-api.component';
 import { KeyApiService } from './key-api.service';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { DecodeMovieSearch } from './mapper/decode-movie-search';
+import { MovieSearchMapper } from './mapper/movie-search.mapper';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { DecodeMovieSearch } from './mapper/decode-movie-search';
   providers: [
       MovieService,
       KeyApiService,
-      DecodeMovieSearch
+      MovieSearchMapper
   ],
   bootstrap: [AppComponent]
 })

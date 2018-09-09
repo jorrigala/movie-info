@@ -7,7 +7,7 @@ import * as camelCaseKeysDeep from 'camelcase-keys-deep/index';
 import { Movie } from './movie';
 import { MovieSearch } from './movie-search.model';
 import { KeyApiService } from './key-api.service';
-import { DecodeMovieSearch } from './mapper/decode-movie-search';
+import { MovieSearchMapper } from './mapper/movie-search.mapper';
 
 @Injectable()
 export class MovieService {
@@ -16,7 +16,7 @@ export class MovieService {
   constructor(
     private http: HttpClient,
     private keyApiService: KeyApiService,
-    private decodeMovieSearch: DecodeMovieSearch) { }
+    private movieSearchMapper: MovieSearchMapper) { }
 
   getOMDBURI(): string {
       return this.OMDb_API + this.keyApiService.getOMDbKeyApi().key + '&';
@@ -33,7 +33,7 @@ export class MovieService {
       return this.http.get<MovieSearch>(this.getOMDBURI() + 's=' + movie + '&type=movie&page=' + pageNumber)
       .pipe(
         map( this.getCamelCaseKeysDeep ),
-        map( this.decodeMovieSearch.decodeMovieSearch )
+        map( this.movieSearchMapper.decodeMovieSearch.bind(this.movieSearchMapper) )
       );
   }
 

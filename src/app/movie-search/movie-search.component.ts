@@ -14,11 +14,12 @@ import StringUtil from '../util/string-util';
 })
 export class MovieSearchComponent implements OnInit {
 
-  private movieList: Movie[];
   private movieSearch: MovieSearch;
-  private movieName = '';
-  private isValidKey: boolean;
   private pagesize = 1;
+
+  movieName = '';
+  movieList: Movie[];
+  isValidKey: boolean;
 
   constructor(private movieService: MovieService,
               private keyApiService: KeyApiService) { }

@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="movieSearch && !hasNextPage()" class="alert alert-dark" role="alert">
+<div *ngIf="movieSearch && movieSearch.response && !hasNextPage()" class="alert alert-dark" role="alert">
     Reached Page Limit
 </div>
 <div *ngIf="movieSearch && !movieSearch.response" class="alert alert-danger" role="alert">

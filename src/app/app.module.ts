@@ -13,6 +13,7 @@ import { KeyApiComponent } from './key-api/key-api.component';
 import { KeyApiService } from './key-api.service';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieSearchMapper } from './mapper/movie-search.mapper';
+import { ColumnLayoutPlugin } from './service/column-layout-plugin.service';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MovieSearchMapper } from './mapper/movie-search.mapper';
   providers: [
       MovieService,
       KeyApiService,
-      MovieSearchMapper
+      MovieSearchMapper,
+      ColumnLayoutPlugin
   ],
   bootstrap: [AppComponent]
 })
